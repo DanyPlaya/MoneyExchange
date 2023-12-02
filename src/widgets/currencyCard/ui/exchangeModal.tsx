@@ -39,7 +39,7 @@ export const ExchangeModal = (props: ExchangeModalProps) => {
           <ModalHeader>Выберите валюту</ModalHeader>
           <ModalCloseButton />
         </Box>
-        <ModalBody overflowY={"auto"}>
+        <ModalBody p={"0"} overflowY={"auto"}>
           <CurrencyTabs setValute={setValute} onClose={onClose} />
         </ModalBody>
       </ModalContent>
