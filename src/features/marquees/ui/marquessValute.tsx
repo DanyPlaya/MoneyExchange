@@ -1,8 +1,9 @@
-import { useGetNoCash } from "@/entities/exchange";
+import { useGetNoCash } from "@/entities/currency";
 import { Box, Image, Text } from "@chakra-ui/react";
+import { memo } from "react";
 import Marquee from "react-fast-marquee";
 
-export const MarqueesValute = () => {
+export const MarqueesValute = memo(() => {
   const { data } = useGetNoCash();
 
   return (
@@ -21,4 +22,4 @@ export const MarqueesValute = () => {
       ))}
     </Marquee>
   );
-};
+});
