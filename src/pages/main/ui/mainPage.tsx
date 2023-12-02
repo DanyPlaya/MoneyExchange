@@ -1,16 +1,16 @@
-import { ExchangeCard } from "@/entities/exchange";
+import { ExchangeCard } from "@/entities/currency";
 import { MarqueesValute } from "@/features/marquees";
-import { Box, Image } from "@chakra-ui/react";
+import { ExchangeList } from "@/widgets/exchangeList";
+import { Box } from "@chakra-ui/react";
 
 export const MainPage = () => {
   return (
-    <Box h={"100vh"}>
+    <Box minH="100vh">
       <MarqueesValute />
       <Box mt={"12px"}>
         <ExchangeCard />
       </Box>
-
-      <Image />
+      <ExchangeList />
     </Box>
   );
 };
