@@ -1,0 +1,1 @@
+export { MarqueesValute } from './ui/marquessValute'
