@@ -9,14 +9,14 @@ type LayoutProps = {
 export const Layout = (props: LayoutProps) => {
   const { headerSlot, bottomSlot, navbarSlot } = props;
   return (
-    <Box display={"flex"} flexDirection={"column"} px={"12px"} minH="100%">
+    <Box px={"12px"} minH="100vh">
       {navbarSlot}
       {headerSlot}
       <Box>
         <Outlet />
       </Box>
-      <Box>{bottomSlot}</Box>
       <ScrollRestoration />
+      <Box>{bottomSlot}</Box>
     </Box>
   );
 };
