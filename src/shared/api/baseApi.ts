@@ -4,7 +4,8 @@ export const baseApi = axios.create(
     {
         baseURL: "https://wttonline.ru/api/",
         headers: {
-            Accept: "application/json"
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*"
         },
 
     }
