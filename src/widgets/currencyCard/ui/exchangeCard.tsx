@@ -16,6 +16,7 @@ import {
 import { motion } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
 import { ExchangeModal } from "./exchangeModal";
+import { useEffect, useState } from "react";
 export const ExchangeCard = () => {
   const {
     isOpen: isOpenFrom,
@@ -27,10 +28,17 @@ export const ExchangeCard = () => {
     onClose: onCloseTo,
     onOpen: onOpenTo,
   } = useDisclosure();
+
   const { valueFrom, valuteTo, setValuteFrom, setValuteTo } =
     useCurrencyStore();
 
   const firstInputSelected = valueFrom.trim() !== "";
+
+  const [localValuteTo, setLocalValuteTo] = useState(valuteTo);
+
+  useEffect(() => {
+    setLocalValuteTo("");
+  }, [valueFrom]);
 
   return (
     <Card bg={"#FFF"}>
@@ -54,6 +62,7 @@ export const ExchangeCard = () => {
               }}
             />
             <ExchangeModal
+              key="from"
               isOpen={isOpenFrom}
               onClose={() => {
                 onCloseFrom();
@@ -71,15 +80,19 @@ export const ExchangeCard = () => {
             <Input
               isReadOnly
               disabled={!firstInputSelected}
-              defaultValue={valuteTo}
+              value={localValuteTo} // Используйте localValuteTo вместо valuteTo
               as={motion.input}
               whileTap={{ scale: 0.95 }}
               onClick={onOpenTo}
             />
             <ExchangeModal
+              key="to"
               isOpen={isOpenTo}
               onClose={onCloseTo}
-              setValute={setValuteTo}
+              setValute={(value) => {
+                setLocalValuteTo(value);
+                setValuteTo(value);
+              }}
             />
           </InputGroup>
         </Box>
